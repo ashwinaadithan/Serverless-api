@@ -23,10 +23,6 @@ exports.handler = async function(event) {
       case event.httpMethod === 'POST' && event.path === employee:
         response = await saveEmployee(JSON.parse(event.body));
         break;
-      case event.httpMethod === 'PATCH' && event.path === employee:
-        const requestBody = JSON.parse(event.body);
-        response = await modifyEmployee(requestBody.employeeId, requestBody.updateKey, requestBody.updateValue);
-        break;
       case event.httpMethod === 'DELETE' && event.path === employee:
         response = await deleteEmployee(JSON.parse(event.body).employeeId);
         break;
